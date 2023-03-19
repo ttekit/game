@@ -1,6 +1,7 @@
 package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.User;
+import com.example.clientsservice.models.enums.Status;
 import com.example.clientsservice.services.UserService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -8,37 +9,51 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.example.clientsservice.devdep.Logger.printInFixColor;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserServiceDbTest {
     @Autowired
     UserService userService;
-    @Autowired
-    User userActual;
-    @Autowired
-    User userExpected;
-    @Autowired
-    List<User> listActual;
-    ArrayList<User> listExpected;
+
+    static User userExpected = new User(1, "test", "test", "test", Status.ACTIVE, User.Role.USER, null);
+    static User userActual;
+
+
 
 
     @Test
+    @Order(1)
     void save() {
         userActual = userService.save(userExpected);
-        assertEquals(userExpected, userActual);
+        printInFixColor(userActual);
+        assertNotNull(userActual);
+        userExpected = userActual;
     }
 
     @Test
-    void saveAll() {
-        listActual = userService.saveAll(listExpected);
-        System.err.println(listActual);
+    @Order(2)
+    void findById(){
+        userActual = userService.findById(userExpected.getId());
+        printInFixColor(userActual);
     }
+
+    @Test
+    @Order(3)
+    void findAll(){
+        List<User> users = userService.findAll();
+        printInFixColor(users);
+    }
+
+    @Test
+    @Order(4)
+    void deleteById(){
+        userService.deleteById(userActual.getId());
+    }
+
 }

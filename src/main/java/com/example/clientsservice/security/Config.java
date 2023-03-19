@@ -1,8 +1,6 @@
 package com.example.clientsservice.security;
 
-import com.example.clientsservice.models.enums.Role;
-import org.apache.tomcat.util.http.parser.Authorization;
-import org.springframework.beans.factory.annotation.Qualifier;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,6 +14,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+
+import static com.example.clientsservice.models.User.Role.ADMIN;
+import static com.example.clientsservice.models.User.Role.USER;
+
 @Configuration
 public class Config {
     @Bean
@@ -26,8 +28,8 @@ public class Config {
 
     InMemoryUserDetailsManager inMemory(BCryptPasswordEncoder encoder) {
         return new InMemoryUserDetailsManager(
-                User.builder().passwordEncoder(encoder::encode).username("root").password("root").roles(Role.ADMIN.name()).build(),
-                User.builder().passwordEncoder(encoder::encode).username("u").password("u").roles(Role.USER.name()).build()
+                User.builder().passwordEncoder(encoder::encode).username("root").password("root").roles(ADMIN.name()).build(),
+                User.builder().passwordEncoder(encoder::encode).username("u").password("u").roles(USER.name()).build()
         );
     }
 
@@ -71,7 +73,7 @@ public class Config {
                         "/user/updateUser"
                 )
                 .hasAuthority(
-                        Role.ADMIN.name()
+                        ADMIN.name()
                 )
                 .and()
                 .formLogin()

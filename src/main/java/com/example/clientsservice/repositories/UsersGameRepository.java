@@ -14,12 +14,12 @@ public interface UsersGameRepository extends JpaRepository<UserGame, Integer> {
     List<UserGame> findByGameId(@Param("id") Integer id);
     @Query(value = "SELECT * FROM users_games, users\n" +
             "WHERE users_games.games_id = users.id\n" +
-            "AND users.id = 2\n", nativeQuery = true)
+            "AND users.id = :id\n", nativeQuery = true)
     List<UserGame> findByUserId(@Param("id") Integer id);
     @Query(value = "SELECT * FROM users_games, games, users\n" +
             "WHERE users_games.games_id = games.id\n" +
             "AND users_games.users_id = users.id\n" +
-            "AND users.id = :userId" +
+            "AND users.id = :userId\n" +
             "AND games.id = :gameId", nativeQuery = true)
     UserGame findByUserIdAndGameId(@Param("userId")Integer userId, @Param("gameId") Integer gameId);
 }

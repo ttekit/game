@@ -23,6 +23,12 @@ public class Game {
     @Column(nullable = false, columnDefinition = "DECIMAL(10) default 0")
     private Integer popularity;
 
-    @ManyToMany(mappedBy = "games")
+
+    @ManyToMany()
+    @ToString.Exclude
+    @JoinTable(name = "users_games",
+            joinColumns = @JoinColumn(table = "games"),
+            inverseJoinColumns = @JoinColumn(table = "users")
+    )
     private List<User> users;
 }

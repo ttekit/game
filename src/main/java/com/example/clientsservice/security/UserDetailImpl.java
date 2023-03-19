@@ -1,18 +1,17 @@
 package com.example.clientsservice.security;
 
 import com.example.clientsservice.models.User;
-import com.example.clientsservice.models.enums.Role;
 import com.example.clientsservice.models.enums.Status;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class UserDetailImpl implements UserDetails {
     private User user;
