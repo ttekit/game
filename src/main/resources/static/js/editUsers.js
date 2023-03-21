@@ -13,13 +13,14 @@ window.addEventListener("load", ()=>{
         user.status = data.find("select[name='status'] option:selected").text()
 
         $.ajax({
-            url: "/user/updateUser",
+            url: "/admin/rest/updateUser",
             method: "post",
             contentType: "application/json",
             data: JSON.stringify(user),
             success: (data) => {
                 if (data === "success") {
-                    window.location.href = "/user"
+                    // window.location.href = "/admin/editUsers"
+                    //TODO: add good alerts
                 } else {
                     alert("data");
                 }

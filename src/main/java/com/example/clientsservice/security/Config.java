@@ -60,17 +60,20 @@ public class Config {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity secur) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity secure) throws Exception {
 
-        secur.authorizeRequests()
+        secure.authorizeRequests()
                 .antMatchers("/error", "/register")
                 .permitAll()
-                .antMatchers(
-                        "/clients"
+                .mvcMatchers(
+                        "/games"
                 )
                 .authenticated()
-                .antMatchers("/users",
-                        "/user/updateUser"
+                .mvcMatchers(
+                        "/admin",
+                        "/admin/editUsers",
+                        "/admin/editGames"
+
                 )
                 .hasAuthority(
                         ADMIN.name()
@@ -82,13 +85,13 @@ public class Config {
                 .defaultSuccessUrl("/")
                 .and()
                 .logout()
- //               .logoutUrl("j_spring_security_logout")
+                //               .logoutUrl("j_spring_security_logout")
                 .logoutSuccessUrl("/login")
                 .and()
                 .csrf()
                 .disable()
         ;
-        return secur.build();
+        return secure.build();
     }
 
 }

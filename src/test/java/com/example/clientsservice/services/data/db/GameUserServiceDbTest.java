@@ -34,7 +34,7 @@ public class GameUserServiceDbTest {
 
 
     static User user = new User(1, "test", "test", "test", Status.ACTIVE, User.Role.USER, null);
-    static Game game = new Game(1, "testing", 0, null);
+    static Game game = new Game(1, "testing", 0, 250.5f, null, null);
 
     @Test
     @Order(1)

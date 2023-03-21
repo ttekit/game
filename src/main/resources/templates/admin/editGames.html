@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Edit Games</title>
+    <th:block th:replace="components/admin/head.html :: head"></th:block>
+</head>
+<body>
+<div th:replace="components/admin/header.html :: header"></div>
+
+<table class="clients-table border-0 m-2 w-auto text-center align-content-center">
+    <tr>
+        <th class="m-2">Email</th>
+        <th class="m-2">Username</th>
+        <th class="m-2">Password</th>
+        <th class="m-2">Role</th>
+        <th class="m-2">Status</th>
+        <th class="m-2">Action</th>
+    </tr>
+    <tbody class="clients-table-body">
+    <!--            /*@thymesVar id="clients" type="List<com.example.clientsservice.models.User>"*/-->
+    <a href="/admin/addNewGame">Add new game</a>
+    <tr th:each="user:${users}" class="container">
+        <input type="hidden" name="Id" id="id" th:value="${user.Id}">
+        <td><input type="email" name="email" th:value="${user.email}"></td>
+        <td><input type="text" name="username" th:value="${user.username}"></td>
+        <td><input type="password" name="password" placeholder="there is hash password, if you want - write new"></td>
+        <td><select name="role">
+            <option th:each="role:${roles}"
+                    th:utext="${role}"
+                    th:value="${role}"
+                    th:selected="${role==user.role.toString()}"></option>
+        </select></td>
+        <td><select name="status" >
+            <option th:each="status:${statuses}"
+                    th:utext="${status}"
+                    th:value="${status}"
+                    th:selected="${status==user.status.toString()}"></option>
+        </select></td>
+        <td>
+            <button class="saveBtn border-0">SAVE</button>
+            <a th:href='@{/user/ban(id=${user.Id})}'>BAN!</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="components/scripts.html :: scripts"></div>
+
+<script src="/js/editUsers.js"></script>
+</body>
+</html>

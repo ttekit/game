@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Edit Games</title>
+    <th:block th:replace="components/admin/head.html :: head"></th:block>
+</head>
+<body>
+<div th:replace="components/admin/header.html :: header"></div>
+
+
+<!--/*@thymesVar id="game" type="com.example.clientsservice.models.Game"*/-->
+<form th:action="@{/admin/rest/addNewGame}" method="post" th:object="${game}" class="add-game-form" enctype="multipart/form-data">
+    <div class="form-group col-md-6">
+        <label>Name</label>
+        <input name="name" type="text" class="form-control" placeholder="Name">
+    </div>
+    <div class="form-group col-md-6">
+        <label>Time Limit(in seconds)</label>
+        <input name="timeLimit" type="text" class="form-control" placeholder="time Limit">
+    </div>
+    <div class="form-group col-md-6">
+        <label>Icon</label>
+        <input name="file" type="file" class="form-control" placeholder="Icon">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save game</button>
+</form>
+
+
+<div th:replace="components/scripts.html :: scripts"></div>
+
+<!--<script src="/js/admin/addGame.js"></script>-->
+</body>
+</html>

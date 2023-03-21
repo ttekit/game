@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:value="${game.name}"></title>
+    <th:block th:replace="components/head.html :: head"></th:block>
+</head>
+<body>
+<div th:replace="components/header.html :: header"></div>
+
+</body>
+</html>

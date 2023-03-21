@@ -1,6 +1,7 @@
 package com.example.clientsservice.models;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,8 +23,10 @@ public class Game {
     private String name;
     @Column(nullable = false, columnDefinition = "DECIMAL(10) default 0")
     private Integer popularity;
-
-
+    @Column(nullable = false, columnDefinition = "DECIMAL(10) default 60")
+    private Float timeLimit;
+    @Column(columnDefinition = "VARCHAR(250) default 'default.png'")
+    private String icon;
     @ManyToMany()
     @ToString.Exclude
     @JoinTable(name = "users_games",
@@ -31,4 +34,12 @@ public class Game {
             inverseJoinColumns = @JoinColumn(table = "users")
     )
     private List<User> users;
+
+    public Game(Integer id, String name, Integer popularity, Float timeLimit, MultipartFile icon){
+        this.Id = id;
+        this.name = name;
+        this.popularity = popularity;
+        this.timeLimit = timeLimit;
+        this.icon = icon.getName();
+    }
 }

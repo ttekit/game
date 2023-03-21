@@ -20,7 +20,7 @@ public class GameServiceDbTest {
     @Autowired
     GameService gameService;
 
-    static Game gameExpected = new Game(1, "testing", 0, null);
+    static Game gameExpected = new Game(1, "testing", 0, 250.5f, null, null);
     static Game gameActual;
 
     @Test
