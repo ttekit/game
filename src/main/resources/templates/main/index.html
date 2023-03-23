@@ -4,107 +4,73 @@
     <meta charset="UTF-8">
     <title>Main page of clients site</title>
     <th:block th:replace="components/head.html :: head"></th:block>
+    <link rel="stylesheet" href="/libs/onepage-scroll/onepage-scroll.css">
+    <link rel="stylesheet" href="/css/mainpage.css">
+    <link rel="stylesheet" href="http://anijs.github.io/lib/anicollection/anicollection.css">
 </head>
 <body id="page-top">
 <div th:replace="components/header.html :: header"></div>
-<!-- Masthead-->
-<header class="masthead">
-    <div class="container px-4 px-lg-5 h-100">
-        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-            <div class="col-lg-8 align-self-end">
-                <h1 class="text-white font-weight-bold">Your Favorite Place for Clients work!</h1>
-                <hr class="divider"/>
-            </div>
-            <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 mb-5">You can add remove and edit clients for free!</p>
-                <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- About -->
-<section class="page-section bg-primary" id="about">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="text-white mt-0">We've got what you need!</h2>
-                <hr class="divider divider-light"/>
-                <p class="text-white-75 mb-4">Start to add your first clients! It is free service for your clients database.
-                    No money? Not problem! Register account and add delete update clients, their phones and addresses. And remeber your data is in precarious security!
-                </p>
-                <a class="btn btn-light btn-xl" href="/register">Get Started!</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Services-->
-<section class="page-section" id="services">
-    <div class="container px-4 px-lg-5">
-        <h2 class="text-center mt-0">At Your Service</h2>
-        <hr class="divider"/>
-        <div class="row gx-4 gx-lg-5">
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Fast and awesome server</h3>
-                    <p class="text-muted mb-0">Our servers is always the <p class="text-decoration-line-through">slo</p> fastest one!</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Precarious security</h3>
-                    <p class="text-muted mb-0">All your data cant take usual user! It isn't good?</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Always in public</h3>
-                    <p class="text-muted mb-0">You can use this database as is, or you can make changes!</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Made with Love</h3>
-                    <p class="text-muted mb-0">Is it really free if it's not made with love?</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Call to action-->
-<section class="page-section bg-dark text-white">
-    <div class="container px-4 px-lg-5 text-center">
-        <h2 class="mb-4">Free register and free usage!</h2>
-        <a class="btn btn-light btn-xl" href="/register">Register Now!</a>
-    </div>
-</section>
-<!-- Contact-->
-<section class="page-section" id="contact">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8 col-xl-6 text-center">
-                <h2 class="mt-0">Let's Get In Touch!</h2>
-                <hr class="divider"/>
-                <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get
-                    back to you as soon as possible!</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Footer-->
-<footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5">
-        <div class="small text-center text-muted">Copyright &copy; 2033 - Clients site</div>
-    </div>
-</footer>
 
+<div class="wrapper">
+    <div class="main">
+        <section class="page1">
+            <h1 class="auto-text">Loading....</h1>
+        </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-<script src="/js/scripts.js"></script>
+        <section class="page2">
+            <div class="details-1"
+                 data-anijs="if: copy, do: bounceIn animated">
+                How to play? Why does it exist? It is obvious
+                Course, to play you need to create account here,
+                after that, you could open 'Clickers' Tab,
+                here is placed ALL clickers that was ever
+                created by our admins. When you found the best one,
+                you can see that there is one big image and timer and
+                when you will click on image, timer would start, and
+                you need just to beat record! It is also, maybe.
+            </div>
+            <div class="circle">
+                <div class="button" data-anijs="if: click, do: wobble animated, to: .circle">
+                    Register
+                </div>
+                <div class="button" data-anijs="if: click, do: rubberBand animated, to: .circle">
+                    Login
+                </div>
+                <div class="button" data-anijs="if: click, do: tada animated, to: .circle">
+                    Top Games
+                </div>
+                <div class="button" data-anijs="if: click, do: swing animated, to: .circle">
+                    Top Players
+                </div>
+                <div class="button" data-anijs="if: click, do: bounce animated, to: .circle">
+                    How to play
+                </div>
+            </div>
+            <div class="details-2"
+                 data-anijs="if: copy, do: bounceIn animated">
+                Also every game have its own players top, where you can see the fastest clicker, ye, and forgot to say:
+                you SHOULDN'T click by your self, you need to write or find auto clicker you write it by your self, so
+                it is faster challenge to programs, course, you can try to click by yourself, but it could be hard.
+            </div>
+        </section>
+
+        <section class="page3">
+            <h1 class="register-text" data-anijs="if: dblclick, do: rollOut animated">Now, when you read this all, is You? dm. Just press button lower and start to play! </h1>
+            <button><a
+                    data-anijs="if: mouseover, do: hinge, to .register-text"
+                    href="/register">REGISTER</a></button>
+        </section>
+    </div>
+</div>
+
 <div th:replace="components/scripts.html :: scripts"></div>
+<script src="/libs/onepage-scroll/jquery.onepage-scroll.js"></script>
+
+<script src="/libs/type-effect/typed.js"></script>
+<script type="module" src="/js/typing.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 </html>
