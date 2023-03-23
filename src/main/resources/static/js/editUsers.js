@@ -18,11 +18,12 @@ window.addEventListener("load", ()=>{
             contentType: "application/json",
             data: JSON.stringify(user),
             success: (data) => {
+                console.log(data)
                 if (data === "success") {
                     // window.location.href = "/admin/editUsers"
                     //TODO: add good alerts
                 } else {
-                    alert("data");
+                    alert(data);
                 }
             },
             error: (xl, er, errMsg) => {

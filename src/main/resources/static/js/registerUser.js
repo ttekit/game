@@ -14,8 +14,7 @@ window.addEventListener("load", () => {
         if (user.username.length < 4 || user.username.length > 30) {
             error += "Username name must to be from 4 to 30 letters \n"
         }
-        if (user.email.length < 5 || user.email.length > 50) {
-            //делать через регулярку = муторно в тестах, так что поставил такую заглушку
+        if (user.email.length < 5 || user.email.length > 25) {
             error += "Email is incorrect \n"
         }
         if (user.password.length < 5 || user.password.length > 18) {
@@ -34,9 +33,9 @@ window.addEventListener("load", () => {
                 data: JSON.stringify(user),
                 success: (data) => {
                     if (data === "success") {
-                        window.location.href = "/user"
+                        window.location.href = "/games"
                     } else {
-                        alert("data");
+                        alert(data);
                     }
                 },
                 error: (xl, er, errMsg) => {

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static com.example.clientsservice.devdep.Logger.printInFixColor;
@@ -33,16 +35,29 @@ public class AdminRestController {
     private String submitRegister(@RequestBody String str, BCryptPasswordEncoder encoder) {
         Gson gson = new Gson();
         User user = gson.fromJson(str, User.class);
-        user.setRole(User.Role.USER);
-        user.setStatus(Status.ACTIVE);
-        user.setPassword(encoder.encode(user.getPassword()));
-        printInFixColor(user);
 
-        user = userService.save(user);
-        if (user != null) {
-            return "success";
+        printInFixColor(userService.findByUsername(user.getUsername()));
+        printInFixColor(userService.findByUsername(user.getUsername()) != null);
+
+        if(userService.findByUsername(user.getUsername()) != null){
+            return "This username is already in use";
         }
-        return "error, try later pls";
+        else{
+            user.setRole(User.Role.USER);
+            user.setStatus(Status.ACTIVE);
+            user.setPassword(encoder.encode(user.getPassword()));
+            printInFixColor(user);
+            try {
+                user = userService.save(user);
+            } catch (Exception e) {
+                return "Some error happened, service is temporary unavailable";
+            }
+
+            if (user != null) {
+                return "success";
+            }
+            return "Some error happened, service is temporary unavailable";
+        }
     }
 
     @PostMapping("/admin/rest/updateUser")
@@ -81,7 +96,7 @@ public class AdminRestController {
 
     public Game write(MultipartFile file, Game game) {
         String fileName = game.getId().toString() + ".png";
-        Path path = Paths.get("src/main/resources/static/images/game/" +fileName);
+        Path path = Paths.get("src/main/resources/static/images/game/" + fileName);
         File toWriteFile = new File(path.toAbsolutePath().toString());
         game.setIcon(fileName);
         try (OutputStream os = new FileOutputStream(toWriteFile)) {

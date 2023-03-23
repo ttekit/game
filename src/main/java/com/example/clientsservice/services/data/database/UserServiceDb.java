@@ -3,6 +3,7 @@ package com.example.clientsservice.services.data.database;
 import com.example.clientsservice.models.User;
 import com.example.clientsservice.repositories.UserRepository;
 import com.example.clientsservice.services.UserService;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,10 @@ public class UserServiceDb implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
