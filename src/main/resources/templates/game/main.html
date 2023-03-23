@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Games</title>
+    <th:block th:replace="components/head.html :: head"></th:block>
+</head>
+<body>
+<th:block th:replace="components/header.html :: header"></th:block>
+<div class="row game-block-container">
+    <div th:each="game:${games}" class="game-block">
+        <div class="title" th:text="${game.name}"></div>
+        <div class="icon">
+            <img th:src="@{'/images/game/' + ${game.icon}}" width="120px" height="120px">
+        </div>
+        <label>Popularity</label>
+        <div class="popularity" th:text="${game.popularity}"></div>
+        <label>Time limit</label>
+        <div class="timeLimit" th:text="${game.timeLimit} + 'sec'"></div>
+        <div class="action">
+            <a class="play" th:href="@{/games/game(id=${game.id})}">Play</a>
+            <a class="records" th:href="@{/games/gameRecords(id=${game.id})}">Records</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

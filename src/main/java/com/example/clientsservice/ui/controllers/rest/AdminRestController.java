@@ -72,11 +72,10 @@ public class AdminRestController {
     private String addNewUser(@ModelAttribute("game") Game game, @RequestParam("file") MultipartFile file) {
         game.setPopularity(0);
         game.setIcon("default.png");
-        printInFixColor(game);
         game = gameService.save(game);
-        printInFixColor(game);
         game = this.write(file, game);
         printInFixColor(game);
+        gameService.save(game);
         return "success";
     }
 

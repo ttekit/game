@@ -66,7 +66,8 @@ public class Config {
                 .antMatchers("/error", "/register")
                 .permitAll()
                 .mvcMatchers(
-                        "/games"
+                        "/games",
+                        "/games/game"
                 )
                 .authenticated()
                 .mvcMatchers(

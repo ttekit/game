@@ -2,11 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:value="${game.name}"></title>
+    <title th:text="${game.name}"></title>
     <th:block th:replace="components/head.html :: head"></th:block>
 </head>
 <body>
+<div class="game-time-limit d-none" th:text="${game.timeLimit}"></div>
+<div class="game-id d-none" th:text="${game.id}"></div>
 <div th:replace="components/header.html :: header"></div>
-
+<div class="game">
+    <button class="press-icon"><img th:src="@{'/images/game/' + ${game.icon}}" alt="icon to press"></button>
+    <div class="timer">Press to start</div>
+    <div class="time-left"></div>
+</div>
 </body>
+<div th:replace="components/scripts.html :: scripts"></div>
+<script src="/js/startGame.js"></script>
 </html>
