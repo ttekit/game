@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>top table</title>
+    <th:block th:replace="components/head.html :: head"></th:block>
+</head>
+<body>
+<th:block th:replace="components/header.html :: header"></th:block>
+<div class="flex-column game-block-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Record</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.key.username}"></td>
+            <td th:text="${user.key.email}"></td>
+            <td th:text="${user.value}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

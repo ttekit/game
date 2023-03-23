@@ -45,4 +45,5 @@ public class User {
     @ManyToMany(mappedBy = "users")
     @ToString.Exclude
     private List<Game> games;
+
 }

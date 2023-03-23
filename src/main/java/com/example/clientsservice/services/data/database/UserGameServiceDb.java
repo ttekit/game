@@ -1,5 +1,6 @@
 package com.example.clientsservice.services.data.database;
 
+import com.example.clientsservice.models.User;
 import com.example.clientsservice.models.UserGame;
 import com.example.clientsservice.repositories.UsersGameRepository;
 import com.example.clientsservice.services.UserGameService;
@@ -36,5 +37,10 @@ public class UserGameServiceDb implements UserGameService {
     @Override
     public UserGame findByUserIdAndGameId(Integer userId, Integer gameId) {
         return usersGameRepository.findByUserIdAndGameId(userId, gameId);
+    }
+
+    @Override
+    public List<User> findUsersByGameId(Integer gameId) {
+        return usersGameRepository.findUsersByGameId(gameId);
     }
 }

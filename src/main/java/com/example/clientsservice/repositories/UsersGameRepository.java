@@ -1,5 +1,6 @@
 package com.example.clientsservice.repositories;
 
+import com.example.clientsservice.models.User;
 import com.example.clientsservice.models.UserGame;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,7 @@ public interface UsersGameRepository extends JpaRepository<UserGame, Integer> {
             "AND users.id = :userId\n" +
             "AND games.id = :gameId", nativeQuery = true)
     UserGame findByUserIdAndGameId(@Param("userId")Integer userId, @Param("gameId") Integer gameId);
+
+    @Query(value = "select u from User u join u.games g where g.Id = :gameId")
+    List<User> findUsersByGameId(@Param("gameId") Integer gameId);
 }
