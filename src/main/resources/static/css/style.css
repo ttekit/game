@@ -2,7 +2,12 @@
     width: 120px;
     height: 120px;
 }
-
+.game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
 .game-block{
     display: flex;
     flex-direction: column;
@@ -41,3 +46,4 @@
     top: 0%;
     left: 0px;
 }
+
